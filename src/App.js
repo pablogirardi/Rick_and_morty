@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import About from './components/About.jsx';
 import Detail from './components/Detail';
 import axios from 'axios';
-//import Form from './components/forms/forms';
+import Form from './components/Form';
 import {Routes,Route, useLocation, useNavigate} from 'react-router-dom'
 //import Favorites from './components/Favorites/favorites';
 
@@ -13,11 +13,26 @@ import {Routes,Route, useLocation, useNavigate} from 'react-router-dom'
 const URL_BASE = "https://rym2-production.up.railway.app/api/character"
 const API_KEY = "/henrym-pablogirardi"
 const EMAIL = 'ejemplo@gmail.com';
-const PASSWORD = '123a';
+const PASSWORD = '123asd';
 
 
 function App() {
+   const location = useLocation();
    const [characters,setCharacters] = useState( [] );
+   const navigate = useNavigate();
+   const [access, setAccess] = useState(false)
+
+   const login = (userData) => {
+      if( userData.EMAIL === EMAIL && userData.PASSWORD === PASSWORD){
+         setAccess(true)
+         navigate ('/home')
+      }
+   }
+
+   useEffect(() => {
+      !access && navigate('/')
+   }, [access])
+
    
    console.log(characters)
    const onSearch = (id) => {
@@ -26,12 +41,14 @@ function App() {
          return
       } else {
          axios(`https://rickandmortyapi.com/api/character/${id}`)
-            .then(({ data }) => {
-               data.name && setCharacters(oldChars => [...oldChars, data])
-            })
-            .catch(() => alert('¡No hay personajes con este ID!'))
+         .then(({ data }) => {
+      if (data.name) {
+         setCharacters((oldChars) => [...oldChars, data]);
+      } else {
+         window.alert('¡No hay personajes con este ID!');
       }
-   }
+   });
+   }}
    function onClose(id){  
       const charactersFiltered = characters.filter( character => 
       character.id !== id)
@@ -40,15 +57,19 @@ function App() {
 
 return (
    <div className='App'>
-      <Nav onSearch={onSearch} />
+      {
+         // location.pathname !== '/' && <Nav onSearch={onSearch} />
+         location.pathname !== '/'
+         ? <Nav onSearch={onSearch} />
+         : null
+      }
       
       <Routes>
-         <Route path="/home" element={<Cards onClose={onClose}
-          characters={characters} />}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/detail/:id" element={<Detail />}/>
+         <Route path="/" element={<Form login={login}/>}/>
+         <Route path="/home" element={<Cards onClose={onClose} characters={characters} />}/>
+         <Route path="/about" element={<About />}/>
+         <Route path="/detail/:id" element={<Detail />}/>
       </Routes>
-      
    </div>
 );
 }

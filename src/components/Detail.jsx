@@ -2,13 +2,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const Detail = ({id}) => {
+const Detail = ({}) => {
     const [character, setCharacter] = useState({}); 
+    const id = useParams().id;
 
     useEffect(() => {
-        axios(`https://rickandmortyapi.com/api/character/${id}`)
-        .then(response => response.data)
-        .then(({ data }) => {
+        axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
            if (data.name) {
               setCharacter(data);
            } else {
@@ -20,10 +19,23 @@ const Detail = ({id}) => {
 
 
     return(
+        // RENDERIZADO CONDICIONAL
         <div>
-            <h1>
-                Hola
-            </h1>
+            
+                 {
+                 /*1{character && <div>
+                         <h2>{character.name}</h2>
+                         <h2>{character.status}</h2>
+                         }
+                 2. character ? <h2>{character.name}</h2> :null */
+                 }
+                 <h2>{character?.name}</h2>
+                 <h2>{character?.status}</h2>
+                 <h2>{character?.species}</h2>
+                 <h2>{character?.gender}</h2>
+                 <h2>{character?.origin?.name}</h2>
+                 <img src={character?.image} alt={character?.name} />
+            
         </div>
 
     );
