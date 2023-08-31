@@ -6,14 +6,14 @@ import About from './components/About.jsx';
 import Detail from './components/Detail';
 import axios from 'axios';
 import Form from './components/Form';
+import Favorites from './components/Favorites';
 import {Routes,Route, useLocation, useNavigate} from 'react-router-dom'
-//import Favorites from './components/Favorites/favorites';
 
 
 const URL_BASE = "https://rym2-production.up.railway.app/api/character"
 const API_KEY = "/henrym-pablogirardi"
-const EMAIL = 'ejemplo@gmail.com';
-const PASSWORD = '123asd';
+const EMAIL = 'pablo@gmail.com';
+const PASSWORD = '123456789';
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
    const [access, setAccess] = useState(false)
 
    const login = (userData) => {
-      if( userData.EMAIL === EMAIL && userData.PASSWORD === PASSWORD){
+      if( userData.email === EMAIL && userData.password === PASSWORD){
          setAccess(true)
          navigate ('/home')
       }
@@ -69,6 +69,7 @@ return (
          <Route path="/home" element={<Cards onClose={onClose} characters={characters} />}/>
          <Route path="/about" element={<About />}/>
          <Route path="/detail/:id" element={<Detail />}/>
+         <Route path="/favorites" element={<Favorites />}/>
       </Routes>
    </div>
 );

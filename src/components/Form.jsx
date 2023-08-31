@@ -7,6 +7,7 @@ const Form = ({login}) => {
         email: '',
         password: ''
     });
+    
     const handleChange = (event) => {
         setUserData({
             ...userData,
@@ -37,7 +38,7 @@ const Form = ({login}) => {
             onChange={handleChange}/>
             {errors.password && <p>{errors.password}</p>}
 
-            <button>Submit</button>
+            <button type="submit">Submit</button>
         </form>
 
     )

@@ -3,7 +3,7 @@ export default function SearchBar({onSearch}) {
    const [id, setId] = useState('');
    function handleChange(event) {
       setId(event.target.value)
-      console.log(event)
+      console.log(event.target.value)
    }
    return (
       <div>

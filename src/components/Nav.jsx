@@ -11,6 +11,9 @@ export default function Nav({onSearch}) {
       <Link to="/Home">
         <button> HOME </button>
       </Link>
+      <Link to="/Favorites">
+        <button> FAVORITES </button>
+      </Link>
       <nav>
       <SearchBar onSearch={onSearch} />
       </nav>
