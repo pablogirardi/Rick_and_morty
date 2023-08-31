@@ -5,7 +5,9 @@ function About (){
     return(
         <div>
 
-            <h1>No hay nada que mostrar por aqui...</h1>
+            <h1>Bienvenidos a mi app de rick y morty</h1>
+            <h2>Enjoy..</h2>
+            <h2>No llegué a ponerle estilo, mis disculpas 🙁</h2>
             <p></p>
         </div>
     );

@@ -12,8 +12,8 @@ import {Routes,Route, useLocation, useNavigate} from 'react-router-dom'
 
 const URL_BASE = "https://rym2-production.up.railway.app/api/character"
 const API_KEY = "/henrym-pablogirardi"
-const EMAIL = 'pablo@gmail.com';
-const PASSWORD = '123456789';
+const EMAIL = 'pa@gmail.com';
+const PASSWORD = '1234567';
 
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
          alert('It already exists');
          return
       } else {
-         axios(`https://rickandmortyapi.com/api/character/${id}`)
+         axios(`http://rym2-production.up.railway.app/api/character/${id}?key=henrym-pablogirardi`)
          .then(({ data }) => {
       if (data.name) {
          setCharacters((oldChars) => [...oldChars, data]);
