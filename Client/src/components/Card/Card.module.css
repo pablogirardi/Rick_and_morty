@@ -1,0 +1,35 @@
+.card {
+  background: #bbcda5;
+  background: linear-gradient(157deg, #bbcda5 0%, #7e7e72 40%, #3e7964 80%);
+  background: -webkit-linear-gradient(
+    157deg,
+    #bbcda5 0%,
+    #7e7e72 40%,
+    #3e7964 80%
+  );
+  background: -moz-linear-gradient(
+    157deg,
+    #bbcda5 0%,
+    #7e7e72 40%,
+    #3e7964 80%
+  );
+  width: fit-content;
+  padding: 1em;
+  box-shadow: 2px 5px 1px -24px rgba(103, 222, 109, 0.85);
+  -webkit-box-shadow: 2px 5px 1px -24px rgba(103, 222, 109, 0.85);
+  -moz-box-shadow: 2px 5px 1px -24px rgba(103, 222, 109, 0.85);
+  margin: 15px;
+  position: relative;
+  border-radius: 25px 25px 25px 25px;
+  -webkit-border-radius: 25px 25px 25px 25px;
+  -moz-border-radius: 25px 25px 25px 25px;
+  border: 2px solid #000000;
+}
+
+.fav {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  border-radius: 8px 8px 8px 8px;
+  border: 1px solid #000000;
+}
